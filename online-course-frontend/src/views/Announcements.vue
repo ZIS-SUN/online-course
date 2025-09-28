@@ -8,15 +8,15 @@
             <div class="brand-icon">
               <el-icon :size="32"><School /></el-icon>
             </div>
-            <span class="brand-text">LearnSpace</span>
+            <span class="brand-text">智慧学院</span>
           </router-link>
         </div>
 
         <div class="nav-links">
           <router-link to="/" class="nav-link">首页</router-link>
-          <router-link to="/courses" class="nav-link">课程</router-link>
+          <router-link to="/courses" class="nav-link">专业课程</router-link>
           <router-link to="/announcements" class="nav-link active">公告</router-link>
-          <router-link v-if="authStore.isLoggedIn" to="/my-courses" class="nav-link">我的课程</router-link>
+          <router-link v-if="authStore.isLoggedIn" to="/my-courses" class="nav-link">我的认证</router-link>
         </div>
 
         <div class="nav-actions">

@@ -20,17 +20,17 @@
           </div>
         </div>
         <h1 class="brand-title">
-          <span class="title-main">Learn</span><span class="title-accent">Space</span>
+          <span class="title-main">智慧</span><span class="title-accent">学院</span>
         </h1>
-        <p class="brand-subtitle">开启你的学习之旅，汇聚全球优质教育资源</p>
+        <p class="brand-subtitle">国家认证的专业技能培训平台，与全球500+知名企业合作</p>
         <div class="feature-list">
           <div class="feature-item" data-feature="video">
             <div class="feature-icon">
               <el-icon><VideoPlay /></el-icon>
             </div>
             <div class="feature-content">
-              <h4>高清视频教学</h4>
-              <p>4K画质，沉浸式学习体验</p>
+              <h4>4K超清视频教学</h4>
+              <p>专业制作，企业级教学体验</p>
             </div>
           </div>
           <div class="feature-item" data-feature="course">
@@ -38,8 +38,8 @@
               <el-icon><Document /></el-icon>
             </div>
             <div class="feature-content">
-              <h4>专业课程体系</h4>
-              <p>系统化知识结构，循序渐进</p>
+              <h4>ISO认证证书</h4>
+              <p>国际标准认证，全球通用</p>
             </div>
           </div>
           <div class="feature-item" data-feature="ai">
@@ -47,24 +47,24 @@
               <el-icon><Cpu /></el-icon>
             </div>
             <div class="feature-content">
-              <h4>AI智能推荐</h4>
-              <p>个性化学习路径定制</p>
+              <h4>AI智能评估</h4>
+              <p>专业能力测评与职业规划</p>
             </div>
           </div>
         </div>
 
         <div class="stats-container">
           <div class="stat-item">
-            <div class="stat-number">1000+</div>
-            <div class="stat-label">精品课程</div>
+            <div class="stat-number">2,500+</div>
+            <div class="stat-label">企业级课程</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">50K+</div>
-            <div class="stat-label">学员</div>
+            <div class="stat-number">150K+</div>
+            <div class="stat-label">认证学员</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">95%</div>
-            <div class="stat-label">满意度</div>
+            <div class="stat-number">98.5%</div>
+            <div class="stat-label">就业成功率</div>
           </div>
         </div>
       </div>
@@ -72,8 +72,8 @@
     <div class="login-right">
       <el-card class="login-card">
         <div class="card-header">
-          <h2 class="login-title">用户登录</h2>
-          <p class="login-subtitle">欢迎回来，继续你的学习之旅</p>
+          <h2 class="login-title">企业级学习平台</h2>
+          <p class="login-subtitle">专业技能认证·职业发展提升·行业精英培养</p>
         </div>
         <div class="demo-accounts">
           <div class="demo-header">

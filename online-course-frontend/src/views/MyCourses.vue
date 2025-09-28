@@ -8,15 +8,15 @@
             <div class="brand-icon">
               <el-icon :size="32"><School /></el-icon>
             </div>
-            <span class="brand-text">LearnSpace</span>
+            <span class="brand-text">智慧学院</span>
           </router-link>
         </div>
 
         <div class="nav-links">
           <router-link to="/" class="nav-link">首页</router-link>
-          <router-link to="/courses" class="nav-link">课程</router-link>
+          <router-link to="/courses" class="nav-link">专业课程</router-link>
           <router-link to="/announcements" class="nav-link">公告</router-link>
-          <router-link to="/my-courses" class="nav-link active">我的课程</router-link>
+          <router-link to="/my-courses" class="nav-link active">我的认证</router-link>
         </div>
 
         <div class="nav-actions">
@@ -57,13 +57,13 @@
     <section class="hero-section">
       <div class="hero-container">
         <div class="hero-content">
-          <h1 class="hero-title">我的课程</h1>
-          <p class="hero-subtitle">继续你的学习之旅，掌握新技能</p>
+          <h1 class="hero-title">我的专业认证</h1>
+          <p class="hero-subtitle">继续专业技能提升，获取行业认证</p>
         </div>
         <div class="hero-stats">
           <div class="stat-card">
             <div class="stat-number">{{ courses.length }}</div>
-            <div class="stat-label">已选课程</div>
+            <div class="stat-label">已认证课程</div>
           </div>
           <div class="stat-card">
             <div class="stat-number">{{ getAverageProgress() }}%</div>
@@ -84,7 +84,7 @@
         <div v-if="courses.length > 0" class="progress-summary">
           <div class="summary-card">
             <div class="summary-header">
-              <h3>学习进度概览</h3>
+              <h3>认证进度概览</h3>
               <span class="summary-subtitle">继续学习，完成目标</span>
             </div>
             <div class="overall-progress">

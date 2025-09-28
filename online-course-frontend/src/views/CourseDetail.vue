@@ -13,7 +13,7 @@
         <div class="breadcrumb">
           <span @click="router.push('/')">首页</span>
           <el-icon><ArrowRight /></el-icon>
-          <span @click="router.push('/courses')">课程</span>
+          <span @click="router.push('/courses')">专业课程</span>
           <el-icon><ArrowRight /></el-icon>
           <span class="current">{{ course.title || '课程详情' }}</span>
         </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="stat-content">
                   <div class="stat-number">{{ formatNumber(course.enrollmentCount || 0) }}</div>
-                  <div class="stat-label">学员</div>
+                  <div class="stat-label">认证学员</div>
                 </div>
               </div>
               <div class="stat-item enhanced-stat">
@@ -102,8 +102,8 @@
                 :loading="enrolling"
               >
                 <el-icon><School /></el-icon>
-                <span v-if="!enrolling">免费选课</span>
-                <span v-else>正在选课...</span>
+                <span v-if="!enrolling">获取认证</span>
+                <span v-else>正在注册...</span>
                 <div class="action-shine"></div>
               </el-button>
               <el-button
@@ -113,7 +113,7 @@
                 @click="startLearning"
               >
                 <el-icon><VideoPlay /></el-icon>
-                开始学习
+开始专业学习
                 <div class="action-shine"></div>
               </el-button>
 
@@ -121,18 +121,18 @@
               <div v-if="course.enrolled" class="enrollment-status">
                 <el-tag class="status-tag enrolled-status" type="success">
                   <el-icon><Check /></el-icon>
-                  已选课 - 可观看所有视频
+                  已认证 - 可学习所有专业内容
                 </el-tag>
               </div>
               <div v-else class="enrollment-status">
                 <el-tag class="status-tag not-enrolled-status" type="warning">
                   <el-icon><Warning /></el-icon>
-                  未选课 - 仅可试看部分内容
+                  未认证 - 仅可预览部分内容
                 </el-tag>
                 <div class="enrollment-hint">
                   <p class="hint-text">
                     <el-icon><Present /></el-icon>
-                    免费选课即可解锁全部内容，无需付费！
+                    免费获取专业认证，解锁全部企业级内容！
                   </p>
                 </div>
               </div>
@@ -163,7 +163,7 @@
               <div class="card-header">
                 <h2 class="section-title">
                   <el-icon><Document /></el-icon>
-                  课程简介
+专业课程介绍
                 </h2>
               </div>
               <div class="card-content">
@@ -171,7 +171,7 @@
                   <p class="description-text">{{ course.description }}</p>
 
                   <div class="course-highlights" v-if="course.highlights">
-                    <h4 class="highlights-title">课程亮点</h4>
+                    <h4 class="highlights-title">专业优势</h4>
                     <div class="highlights-grid">
                       <div class="highlight-item" v-for="(highlight, index) in getHighlights()" :key="index">
                         <el-icon class="highlight-icon"><Check /></el-icon>
@@ -181,14 +181,14 @@
                   </div>
 
                   <div class="instructor-info" v-if="course.instructor">
-                    <h4 class="instructor-title">讲师介绍</h4>
+                    <h4 class="instructor-title">行业专家</h4>
                     <div class="instructor-card">
                       <div class="instructor-avatar">
                         <img :src="course.instructor.avatar || '/default-avatar.png'" :alt="course.instructor.name" />
                       </div>
                       <div class="instructor-details">
-                        <h5 class="instructor-name">{{ course.instructor.name || '专业讲师' }}</h5>
-                        <p class="instructor-bio">{{ course.instructor.bio || '多年从业经验，专注于实用技能教学' }}</p>
+                        <h5 class="instructor-name">{{ course.instructor.name || '认证专家' }}</h5>
+                        <p class="instructor-bio">{{ course.instructor.bio || '行业领先专家，专注企业级技能认证培训' }}</p>
                       </div>
                     </div>
                   </div>
@@ -203,10 +203,10 @@
               <div class="card-header">
                 <h2 class="section-title">
                   <el-icon><Menu /></el-icon>
-                  课程目录
+专业大纲
                 </h2>
                 <div class="course-progress" v-if="course.enrolled">
-                  <span class="progress-text">进度 0/{{ getTotalVideos() }}</span>
+                  <span class="progress-text">认证进度 0/{{ getTotalVideos() }}</span>
                   <el-progress :percentage="0" :show-text="false" :stroke-width="4" />
                 </div>
               </div>
@@ -496,12 +496,12 @@ const getParticleStyle = (index) => {
 
 const getHighlights = () => {
   return [
-    '高清视频教学，画质清晰',
-    '实战项目驱动，理论结合实践',
-    '完整课程体系，系统性学习',
-    '专业讲师指导，随时答疑',
-    '终身免费更新，持续学习',
-    '完成证书颁发，职业加分'
+    '行业认证标准，权威专业认可',
+    '企业级项目实战，真实案例教学',
+    '系统化培训体系，循序渐进学习',
+    '专家团队指导，一对一答疑',
+    '终身技术支持，持续能力提升',
+    '权威证书认证，职业发展助力'
   ]
 }
 

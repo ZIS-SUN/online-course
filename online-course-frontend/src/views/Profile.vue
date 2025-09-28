@@ -2,7 +2,7 @@
   <div class="profile-container">
     <el-container>
       <el-header class="header">
-        <div class="logo" @click="router.push('/')">在线课程学习系统</div>
+        <div class="logo" @click="router.push('/')">智慧学院</div>
         <span class="page-title">个人中心</span>
         <el-button icon="ArrowLeft" @click="router.push('/')">返回首页</el-button>
       </el-header>
@@ -32,7 +32,7 @@
               <el-input v-model="userInfo.phone" />
             </el-form-item>
             <el-form-item label="角色">
-              <el-tag>{{ userInfo.role === 'ADMIN' ? '管理员' : '学员' }}</el-tag>
+              <el-tag>{{ userInfo.role === 'ADMIN' ? '管理员' : '认证学员' }}</el-tag>
             </el-form-item>
             <el-form-item v-if="editMode">
               <el-button type="primary" @click="saveProfile">保存修改</el-button>

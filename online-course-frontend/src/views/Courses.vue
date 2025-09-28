@@ -8,7 +8,7 @@
             <div class="brand-icon">
               <el-icon :size="24"><School /></el-icon>
             </div>
-            LearnSpace
+            智慧学院
           </a>
 
           <div class="modern-nav-links">
@@ -51,21 +51,21 @@
       <div class="container">
         <div class="header-content">
           <div class="header-text">
-            <h1 class="modern-page-title">探索课程</h1>
-            <p class="modern-page-subtitle">发现最适合你的学习内容，开启技能提升之旅</p>
+            <h1 class="modern-page-title">专业课程体系</h1>
+            <p class="modern-page-subtitle">汇聚行业顶级专家智慧，打造企业级技能认证培训平台</p>
           </div>
           <div class="header-stats">
             <div class="stat-card">
-              <div class="stat-number">1000+</div>
-              <div class="stat-label">精品课程</div>
+              <div class="stat-number">2,500+</div>
+              <div class="stat-label">专业课程</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">50K+</div>
-              <div class="stat-label">学习者</div>
+              <div class="stat-number">150K+</div>
+              <div class="stat-label">认证学员</div>
             </div>
             <div class="stat-card">
-              <div class="stat-number">95%</div>
-              <div class="stat-label">满意度</div>
+              <div class="stat-number">98%</div>
+              <div class="stat-label">企业认可度</div>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
                 <input
                   v-model="searchKeyword"
                   class="search-input"
-                  placeholder="搜索课程、技术、讲师..."
+                  placeholder="搜索专业课程、技术认证、行业专家..."
                   @keyup.enter="handleSearch"
                   @input="handleLiveSearch"
                 />
@@ -93,7 +93,7 @@
               </div>
               <button class="modern-btn modern-btn-primary modern-btn-lg search-btn" @click="handleSearch">
                 <el-icon><Search /></el-icon>
-                搜索课程
+搜索专业课程
               </button>
             </div>
 

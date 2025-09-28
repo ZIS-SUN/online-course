@@ -8,7 +8,7 @@
             <div class="brand-icon">
               <el-icon :size="24"><School /></el-icon>
             </div>
-            LearnSpace
+智慧学院
           </router-link>
 
           <div class="modern-nav-links">
@@ -62,17 +62,17 @@
       <div class="hero-content">
         <div class="hero-text">
           <div class="hero-badge">
-            <el-icon><Star /></el-icon>
-            <span>全新学习体验</span>
+            <el-icon><Trophy /></el-icon>
+            <span>国家级在线教育认证平台</span>
           </div>
           <h1 class="hero-title">
-            开启你的
-            <span class="gradient-text">学习之旅</span>
-            <br>探索无限可能
+            构建未来的
+            <span class="gradient-text">数字化学习</span>
+            <br>专业技能提升平台
           </h1>
           <p class="hero-subtitle">
-            汇聚全球优质教育资源，运用前沿技术为你提供个性化学习体验。
-            <br>让学习变得更有趣、更高效、更有成就感。
+            与全球500+知名企业及顶级院校合作，为你提供权威认证的专业课程。
+            <br>已成功培养超过10万名行业精英，平均薪资提升68%。
           </p>
 
           <div class="hero-features">
@@ -80,44 +80,44 @@
               <div class="feature-icon">
                 <el-icon><VideoPlay /></el-icon>
               </div>
-              <span>高清视频</span>
+              <span>4K超清视频</span>
             </div>
             <div class="feature-item">
               <div class="feature-icon">
                 <el-icon><Medal /></el-icon>
               </div>
-              <span>权威认证</span>
+              <span>ISO认证证书</span>
             </div>
             <div class="feature-item">
               <div class="feature-icon">
                 <el-icon><ChatDotRound /></el-icon>
               </div>
-              <span>互动学习</span>
+              <span>1V1专家指导</span>
             </div>
             <div class="feature-item">
               <div class="feature-icon">
                 <el-icon><Cpu /></el-icon>
               </div>
-              <span>AI助手</span>
+              <span>AI智能评估</span>
             </div>
           </div>
 
           <div class="hero-stats">
             <div class="stat">
-              <div class="stat-number">1000+</div>
-              <div class="stat-label">精品课程</div>
+              <div class="stat-number">2,500+</div>
+              <div class="stat-label">企业级课程</div>
             </div>
             <div class="stat">
-              <div class="stat-number">50K+</div>
-              <div class="stat-label">学习者</div>
+              <div class="stat-number">150K+</div>
+              <div class="stat-label">认证学员</div>
             </div>
             <div class="stat">
-              <div class="stat-number">95%</div>
-              <div class="stat-label">好评率</div>
+              <div class="stat-number">98.5%</div>
+              <div class="stat-label">就业成功率</div>
             </div>
             <div class="stat">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">在线支持</div>
+              <div class="stat-number">500+</div>
+              <div class="stat-label">合作企业</div>
             </div>
           </div>
 
@@ -133,7 +133,7 @@
           </div>
 
           <div class="hero-trust">
-            <p class="trust-text">已获得超过 50,000+ 学习者的信赖</p>
+            <p class="trust-text">已获得超过 150,000+ 企业专业人士的信赖</p>
             <div class="trust-avatars">
               <div class="avatar-group">
                 <div class="trust-avatar avatar-1">A</div>
@@ -331,6 +331,60 @@
       </div>
     </section>
 
+    <!-- Partners Section -->
+    <section class="partners-section">
+      <div class="container">
+        <div class="section-header-center">
+          <h2 class="section-title">权威合作伙伴</h2>
+          <p class="section-subtitle">与全球领先企业和院校共同打造专业课程体系</p>
+        </div>
+        <div class="partners-grid">
+          <div class="partner-logo">
+            <div class="logo-placeholder">Microsoft</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">Google</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">Amazon</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">IBM</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">清华大学</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">北京大学</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">阿里巴巴</div>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">腾讯</div>
+          </div>
+        </div>
+        <div class="certification-badges">
+          <div class="cert-badge">
+            <el-icon><Medal /></el-icon>
+            <span>ISO 9001认证</span>
+          </div>
+          <div class="cert-badge">
+            <el-icon><Trophy /></el-icon>
+            <span>国家教育部认证</span>
+          </div>
+          <div class="cert-badge">
+            <el-icon><Star /></el-icon>
+            <span>高新技术企业</span>
+          </div>
+          <div class="cert-badge">
+            <el-icon><Shield /></el-icon>
+            <span>信息安全等保三级</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="modern-footer">
       <div class="container">
@@ -340,9 +394,9 @@
               <div class="brand-icon">
                 <el-icon :size="28"><School /></el-icon>
               </div>
-              <span class="brand-text">LearnSpace</span>
+              <span class="brand-text">智慧学院</span>
             </div>
-            <p>专注于提供优质的在线教育体验</p>
+            <p>国家认证的专业技能培训与职业发展平台</p>
           </div>
           <div class="footer-links">
             <div class="link-group">
@@ -358,7 +412,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2024 LearnSpace. 保留所有权利。</p>
+          <p>&copy; 2024 智慧学院教育科技有限公司. 保留所有权利。 | 京ICP备20240001号-1</p>
         </div>
       </div>
     </footer>
@@ -1229,6 +1283,12 @@ const getLevelType = (level) => {
   background: white;
 }
 
+.partners-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-top: 1px solid var(--gray-200);
+}
+
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -1873,6 +1933,141 @@ const getLevelType = (level) => {
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* Partners Section Styles */
+.section-header-center {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  margin-top: var(--space-4);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: 4rem;
+  align-items: center;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--gray-200);
+}
+
+.partner-logo:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.logo-placeholder {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--gray-700);
+  text-align: center;
+  padding: var(--space-2);
+}
+
+.certification-badges {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.cert-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: var(--transition);
+  position: relative;
+}
+
+.cert-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: white;
+}
+
+.cert-badge:hover::before {
+  opacity: 1;
+}
+
+.cert-badge .el-icon {
+  color: var(--primary);
+  font-size: var(--text-lg);
+  transition: var(--transition);
+}
+
+.cert-badge:hover .el-icon {
+  color: white;
+}
+
+.cert-badge span {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--gray-700);
+  transition: var(--transition);
+}
+
+.cert-badge:hover span {
+  color: white;
+}
+
+/* Responsive for Partners */
+@media (max-width: 768px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .certification-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cert-badge {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
 }
 
 </style>
