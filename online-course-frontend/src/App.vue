@@ -2,6 +2,7 @@
 import { provide } from 'vue'
 import GlobalLoading from './components/GlobalLoading.vue'
 import PageTransition from './components/PageTransition.vue'
+import ThemeToggle from './components/ThemeToggle.vue'
 import { useLoadingStore } from './stores/loading'
 
 const loadingStore = useLoadingStore()
@@ -29,6 +30,9 @@ provide('loading', loadingStore)
       :allow-close="loadingStore.allowClose"
       @close="loadingStore.hideLoading()"
     />
+
+    <!-- 主题切换按钮 -->
+    <ThemeToggle />
   </div>
 </template>
 
@@ -44,12 +48,13 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  color: var(--gray-900);
-  background-color: var(--gray-50);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  font-size: var(--font-size-base);
 }
 
 /* Custom scrollbar */
@@ -59,21 +64,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-100);
+  background: var(--color-gray-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-400);
+  background: var(--color-gray-400);
   border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gray-500);
+  background: var(--color-gray-500);
 }
 
 /* Focus styles */
 *:focus {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -83,13 +89,13 @@ body {
 
 /* Selection styles */
 ::selection {
-  background-color: rgba(0, 86, 211, 0.2);
-  color: var(--gray-900);
+  background-color: rgba(99, 102, 241, 0.2);
+  color: var(--color-text-primary);
 }
 
 /* Smooth transitions for all interactive elements */
 a, button, input, textarea, select {
-  transition: var(--transition);
+  transition: var(--transition-base);
 }
 
 /* Ensure images are responsive */

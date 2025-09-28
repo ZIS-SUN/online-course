@@ -1014,40 +1014,75 @@ const getLevelType = (level) => {
 
 .hero-actions {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.hero-actions .el-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+  background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
   border: none !important;
-  border-radius: 16px !important;
-  padding: 1rem 2rem !important;
+  border-radius: 14px !important;
+  padding: 1.1rem 2.5rem !important;
   font-size: 1.125rem !important;
-  font-weight: 600 !important;
-  box-shadow: 0 8px 30px rgba(251, 191, 36, 0.4) !important;
-  transition: all 0.3s !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
 }
 
 .cta-button:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 12px 40px rgba(251, 191, 36, 0.5) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.45) !important;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(-2px) scale(1) !important;
 }
 
 .outline-button {
-  background: transparent !important;
-  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 2px solid rgba(255, 255, 255, 0.25) !important;
   color: white !important;
-  border-radius: 16px !important;
-  padding: 1rem 2rem !important;
+  border-radius: 14px !important;
+  padding: 1rem 2.2rem !important;
   font-size: 1.125rem !important;
   font-weight: 600 !important;
-  backdrop-filter: blur(10px) !important;
-  transition: all 0.3s !important;
+  backdrop-filter: blur(12px) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  letter-spacing: 0.02em;
 }
 
 .outline-button:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15) !important;
+}
+
+.outline-button:active {
+  transform: translateY(-1px) scale(1) !important;
 }
 
 /* Hero Visual */

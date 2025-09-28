@@ -910,14 +910,28 @@ onMounted(() => {
 /* Course Grid */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+  padding: var(--spacing-2) 0;
 }
 
 .enhanced-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+  padding: var(--spacing-2) 0;
+  animation: fadeInUp var(--transition-slow) ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .compact-grid {
@@ -930,18 +944,41 @@ onMounted(() => {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-base);
+  border-radius: var(--radius-xl);
 }
 
 .enhanced-card {
-  border: 1px solid var(--gray-200);
-  background: white;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--color-white), var(--color-white)) padding-box,
+              linear-gradient(135deg, var(--color-gray-200), var(--color-gray-300)) border-box;
+  box-shadow: var(--shadow-sm);
+}
+
+.enhanced-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.05),
+    rgba(139, 92, 246, 0.05));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.enhanced-card:hover::before {
+  opacity: 1;
 }
 
 .enhanced-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: var(--primary);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
+  background: linear-gradient(var(--color-white), var(--color-white)) padding-box,
+              linear-gradient(135deg, var(--color-primary), var(--color-secondary)) border-box;
 }
 
 .enhanced-card.loading {
@@ -1053,12 +1090,15 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.9),
+    rgba(139, 92, 246, 0.7));
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-base);
 }
 
 .course-card:hover .course-overlay {
@@ -1084,17 +1124,44 @@ onMounted(() => {
 }
 
 .action-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: var(--text-lg);
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.action-btn:hover::before {
+  width: 60px;
+  height: 60px;
+}
+
+.action-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
 }

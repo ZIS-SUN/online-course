@@ -2,13 +2,18 @@
 /* 全局设计系统 - 统一的设计语言和组件样式 */
 
 :root {
-  /* 主题色彩 */
-  --primary: #667eea;
+  /* 主题色彩 - 现代紫蓝渐变系统 */
+  --primary: #6366f1;
   --primary-light: #818cf8;
-  --primary-dark: #5b21b6;
-  --secondary: #764ba2;
-  --accent: #fbbf24;
-  --accent-dark: #f59e0b;
+  --primary-lighter: #a5b4fc;
+  --primary-dark: #4f46e5;
+  --primary-darker: #4338ca;
+  --secondary: #8b5cf6;
+  --secondary-light: #a78bfa;
+  --secondary-dark: #7c3aed;
+  --accent: #06b6d4;
+  --accent-light: #22d3ee;
+  --accent-dark: #0891b2;
 
   /* 功能色彩 */
   --success: #10b981;
@@ -39,13 +44,17 @@
   --gradient-success: linear-gradient(135deg, var(--success), var(--success-light));
   --gradient-background: linear-gradient(135deg, var(--gray-50), var(--gray-200));
 
-  /* 阴影 */
+  /* 增强的阴影系统 - 提供更好的深度感 */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.12), 0 16px 32px rgba(0, 0, 0, 0.06);
+  --shadow-button: 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-button-hover: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.08);
 
   /* 圆角 */
   --radius-sm: 4px;
@@ -56,19 +65,29 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* 间距 */
+  /* 优化的间距系统 - 更好的视觉节奏 */
+  --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
   --space-5: 1.25rem;
   --space-6: 1.5rem;
+  --space-7: 1.75rem;
   --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
+  --space-14: 3.5rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* 卡片和组件间距 */
+  --card-spacing: var(--space-6);
+  --card-spacing-lg: var(--space-8);
+  --grid-gap: var(--space-6);
+  --grid-gap-lg: var(--space-8);
 
   /* 字体 */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -157,19 +176,48 @@ body {
   }
 }
 
-/* 现代化卡片 */
+/* 现代化卡片 - 增强的视觉层次 */
 .modern-card {
   background: var(--white);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   overflow: hidden;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.modern-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modern-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.modern-card:hover::before {
+  opacity: 1;
+}
+
+/* 卡片变体 */
+.modern-card-flat {
+  box-shadow: none;
+  border: 1px solid var(--gray-200);
+}
+
+.modern-card-elevated {
   box-shadow: var(--shadow-xl);
-  transform: translateY(-2px);
+  border: none;
 }
 
 .modern-card-header {
@@ -179,7 +227,11 @@ body {
 }
 
 .modern-card-content {
-  padding: var(--space-8);
+  padding: var(--card-spacing);
+}
+
+.modern-card-content-lg {
+  padding: var(--card-spacing-lg);
 }
 
 .modern-card-footer {
@@ -188,7 +240,7 @@ body {
   border-top: 1px solid var(--gray-200);
 }
 
-/* 现代化按钮 */
+/* 现代化按钮 - 增强交互反馈 */
 .modern-btn {
   display: inline-flex;
   align-items: center;
@@ -200,25 +252,53 @@ body {
   border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+/* 波纹效果 */
+.modern-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.modern-btn:active::before {
+  width: 300px;
+  height: 300px;
 }
 
 .modern-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none !important;
 }
 
 .modern-btn-primary {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: var(--white);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: var(--shadow-button);
 }
 
 .modern-btn-primary:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-button-hover);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+}
+
+.modern-btn-primary:active:not(:disabled) {
+  transform: translateY(0) scale(1);
 }
 
 .modern-btn-secondary {
@@ -267,35 +347,71 @@ body {
   border-radius: var(--radius);
 }
 
-/* 现代化输入框 */
+/* 现代化输入框 - 改进的表单设计 */
 .modern-input {
   width: 100%;
   padding: var(--space-3) var(--space-4);
   font-size: var(--text-base);
-  border: 1px solid var(--gray-300);
+  border: 2px solid var(--gray-200);
   border-radius: var(--radius-md);
   background: var(--white);
-  transition: var(--transition);
+  transition: all 0.2s ease;
+}
+
+.modern-input:hover:not(:focus) {
+  border-color: var(--gray-300);
+  background: var(--gray-50);
 }
 
 .modern-input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  background: var(--white);
 }
 
-.modern-input:hover {
-  border-color: var(--gray-400);
+.modern-input:valid {
+  border-color: var(--success);
 }
 
-/* 现代化导航 */
+.modern-input:invalid:not(:placeholder-shown) {
+  border-color: var(--error);
+}
+
+/* 输入框组 */
+.modern-form-group {
+  margin-bottom: var(--space-6);
+}
+
+.modern-form-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--gray-700);
+}
+
+.modern-form-hint {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--gray-500);
+}
+
+.modern-form-error {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--error);
+}
+
+/* 现代化导航 - 改进的导航栏设计 */
 .modern-nav {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--gray-200);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .modern-nav-content {
@@ -326,13 +442,34 @@ body {
   font-weight: var(--font-medium);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius);
-  transition: var(--transition);
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.modern-nav-link:hover,
+.modern-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: var(--space-4);
+  right: var(--space-4);
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.modern-nav-link:hover {
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.08);
+}
+
 .modern-nav-link.active {
   color: var(--primary);
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.modern-nav-link.active::after {
+  transform: scaleX(1);
 }
 
 /* 现代化页面标题 */
@@ -359,22 +496,34 @@ body {
   margin: 0 auto;
 }
 
-/* 现代化网格 */
+/* 现代化网格 - 改进的间距系统 */
 .modern-grid {
   display: grid;
-  gap: var(--space-8);
+  gap: var(--grid-gap);
+}
+
+.modern-grid-lg {
+  gap: var(--grid-gap-lg);
 }
 
 .modern-grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .modern-grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .modern-grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* 课程卡片网格优化 */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
 }
 
 /* 现代化标签 */
@@ -568,4 +717,190 @@ body {
 
 @keyframes spin {
   to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 增强的进度条 */
+.modern-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.modern-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: var(--radius-full);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 进度条标签 */
+.modern-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.modern-progress-percentage {
+  font-weight: var(--font-semibold);
+  color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* 公告样式优化 */
+.announcement-item {
+  padding: var(--space-6);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  margin-bottom: var(--space-4);
+  transition: all 0.3s ease;
+}
+
+.announcement-item:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-lighter);
+  transform: translateX(4px);
+}
+
+.announcement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.announcement-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.announcement-date {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+  background: var(--gray-100);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.announcement-content {
+  color: var(--gray-700);
+  line-height: var(--leading-relaxed);
+  max-height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.announcement-content.expanded {
+  max-height: none;
+}
+
+.announcement-toggle {
+  margin-top: var(--space-3);
+  color: var(--primary);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.announcement-toggle:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* 移动端汉堡菜单 */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--gray-700);
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* 响应式导航菜单 */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .modern-nav-links {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: var(--space-4);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 49;
+  }
+
+  .modern-nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .modern-nav-link {
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+  }
 }

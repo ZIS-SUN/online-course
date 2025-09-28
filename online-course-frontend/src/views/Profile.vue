@@ -148,41 +148,143 @@ const changePassword = async () => {
 <style scoped>
 .profile-container {
   min-height: 100vh;
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
 }
 
 .header {
-  background-color: white;
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0 var(--spacing-6);
+  box-shadow: var(--shadow-soft);
+  border-bottom: 1px solid var(--color-border-primary);
 }
 
 .logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #409eff;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   cursor: pointer;
+  transition: transform var(--transition-base);
+}
+
+.logo:hover {
+  transform: translateX(-4px);
 }
 
 .page-title {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
   flex: 1;
   text-align: center;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .main {
-  padding: 20px;
-  max-width: 800px;
+  padding: var(--spacing-8) var(--spacing-6);
+  max-width: 900px;
   margin: 0 auto;
+}
+
+.main :deep(.el-card) {
+  border-radius: var(--radius-xl);
+  border: none;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.main :deep(.el-card:hover) {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.main :deep(.el-card__header) {
+  background: linear-gradient(135deg, var(--color-gray-50), var(--color-white));
+  border-bottom: 2px solid var(--color-border-primary);
+  padding: var(--spacing-6);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card-header span {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.main :deep(.el-form-item__label) {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.main :deep(.el-input__wrapper) {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-base);
+}
+
+.main :deep(.el-input__wrapper:hover) {
+  box-shadow: var(--shadow-sm);
+}
+
+.main :deep(.el-input__wrapper.is-focus) {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  border-color: var(--color-primary);
+}
+
+.main :deep(.el-button--primary) {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-3) var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.main :deep(.el-button--primary:hover) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+.main :deep(.el-tag) {
+  border-radius: var(--radius-full);
+  padding: var(--spacing-1) var(--spacing-3);
+  font-weight: var(--font-weight-medium);
+  background: linear-gradient(135deg, var(--color-primary-lighter), var(--color-primary-light));
+  color: var(--color-primary-darker);
+  border: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 var(--spacing-4);
+  }
+
+  .logo {
+    font-size: var(--font-size-base);
+  }
+
+  .page-title {
+    font-size: var(--font-size-base);
+  }
+
+  .main {
+    padding: var(--spacing-4);
+  }
 }
 </style>

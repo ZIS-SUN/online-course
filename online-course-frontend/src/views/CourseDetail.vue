@@ -25,42 +25,36 @@
       <div class="hero-background">
         <img :src="course.coverUrl || '/default-cover.jpg'" alt="course cover" />
         <div class="hero-overlay"></div>
-        <div class="hero-particles">
-          <div class="particle" v-for="i in 20" :key="i" :style="getParticleStyle(i)"></div>
-        </div>
+        <div class="hero-gradient"></div>
+        <div class="hero-pattern"></div>
       </div>
       <div class="hero-content">
-        <div class="course-info">
-          <div class="course-badges">
-            <div class="badge-container">
-              <el-tag class="level-badge enhanced-badge" :type="getLevelType(course.level)">
-                <el-icon><TrendCharts /></el-icon>
-                {{ getLevelName(course.level) }}
-              </el-tag>
-              <el-tag v-if="course.isFree" class="free-badge enhanced-badge" type="success">
-                <el-icon><Present /></el-icon>
-                免费课程
-              </el-tag>
-              <div class="trending-badge" v-if="course.trending">
-                <el-icon><TrendCharts /></el-icon>
-                <span>热门</span>
+        <div class="hero-container">
+          <div class="course-main-info">
+            <div class="course-badges">
+              <div class="badge-container">
+                <span class="badge-item level-badge" :class="`level-${course.level || 'beginner'}`">
+                  <el-icon><TrendCharts /></el-icon>
+                  {{ getLevelName(course.level) }}
+                </span>
+                <span v-if="course.isFree" class="badge-item free-badge">
+                  <el-icon><Present /></el-icon>
+                  免费课程
+                </span>
+                <span v-if="course.trending" class="badge-item trending-badge">
+                  <el-icon><Flame /></el-icon>
+                  热门课程
+                </span>
               </div>
             </div>
-          </div>
-          <h1 class="course-title">
-            <span class="title-text">{{ course.title }}</span>
-            <div class="title-decoration"></div>
-          </h1>
-          <p class="course-subtitle">{{ course.subtitle }}</p>
-          <div class="course-stats">
-            <div class="stats-grid">
-              <div class="stat-item enhanced-stat">
-                <div class="stat-icon">
-                  <el-icon><User /></el-icon>
-                </div>
+            <h1 class="course-title">{{ course.title || '专业课程' }}</h1>
+            <p class="course-subtitle">{{ course.subtitle || '深入学习行业专业技能' }}</p>
+            <div class="course-stats">
+              <div class="stat-item">
+                <el-icon class="stat-icon"><User /></el-icon>
                 <div class="stat-content">
-                  <div class="stat-number">{{ formatNumber(course.enrollmentCount || 0) }}</div>
-                  <div class="stat-label">认证学员</div>
+                  <div class="stat-value">{{ formatNumber(course.enrollmentCount || 0) }}</div>
+                  <div class="stat-label">学员</div>
                 </div>
               </div>
               <div class="stat-item enhanced-stat">
@@ -1018,8 +1012,10 @@ const isExpanded = (sectionId) => {
 
 .content-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  padding: 0 var(--spacing-4);
 }
 
 /* Modern Cards */
@@ -1444,14 +1440,39 @@ const isExpanded = (sectionId) => {
 .video-item {
   display: flex;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.75rem;
   cursor: pointer;
-  transition: all 0.3s;
-  border-top: 1px solid #f1f5f9;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--color-white), var(--color-gray-50));
+  box-shadow: var(--shadow-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.video-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.video-item:hover::before {
+  transform: translateX(100%);
 }
 
 .video-item:hover {
-  background: #f8fafc;
+  background: linear-gradient(135deg, var(--color-primary-lighter), var(--color-white));
+  border-color: var(--color-primary);
+  transform: translateY(-2px) translateX(2px);
+  box-shadow: var(--shadow-primary);
   transform: translateX(4px);
 }
 
@@ -1476,9 +1497,16 @@ const isExpanded = (sectionId) => {
 }
 
 .video-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.enhanced-video-item:hover .video-title {
+  color: var(--primary);
 }
 
 .video-duration {
@@ -1585,6 +1613,135 @@ const isExpanded = (sectionId) => {
   }
 }
 
+/* 增强的播放按钮样式 */
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.play-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.play-button:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.play-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+}
+
+/* 改进的状态标识 */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.completed {
+  background: linear-gradient(135deg, var(--color-success-light), var(--color-success));
+  color: white;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.in-progress {
+  background: linear-gradient(135deg, var(--color-warning-light), var(--color-warning));
+  color: white;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.status-badge.locked {
+  background: linear-gradient(135deg, var(--color-gray-400), var(--color-gray-500));
+  color: white;
+  box-shadow: 0 2px 8px rgba(107, 114, 128, 0.3);
+}
+
+/* 视频项增强样式 */
+.video-item-enhanced {
+  position: relative;
+  padding-left: 60px;
+}
+
+.video-item-enhanced::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--color-primary-lighter), var(--color-primary-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 课程介绍部分增强 */
+.description-section {
+  position: relative;
+}
+
+.description-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 2px;
+}
+
+/* 响应式优化 */
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-item {
+    padding: 1rem;
+  }
+
+  .content-grid {
+    padding: 0 var(--spacing-2);
+  }
+}
+
 /* Element Plus Overrides */
 :deep(.el-progress-bar__outer) {
   background: rgba(255, 255, 255, 0.2) !important;
@@ -1616,5 +1773,342 @@ const isExpanded = (sectionId) => {
 :deep(.course-enroll-dialog .el-button--primary) {
   background: #0056d3 !important;
   border-color: #0056d3 !important;
+}
+
+/* ========== 全新UI布局优化 ========== */
+
+/* 重新设计的Hero区域 - 使用Important确保样式生效 */
+.hero-section {
+  position: relative !important;
+  min-height: 480px !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  overflow: visible !important;
+  padding: 80px 0 120px !important;
+  margin-bottom: -80px !important;
+}
+
+.hero-background {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  opacity: 0.15 !important;
+}
+
+.hero-background img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: blur(3px) !important;
+}
+
+.hero-content {
+  position: relative !important;
+  z-index: 10 !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 60px !important;
+}
+
+/* 标题和副标题优化 */
+.course-title {
+  font-size: 3.5rem !important;
+  font-weight: 800 !important;
+  color: white !important;
+  line-height: 1.2 !important;
+  margin-bottom: 20px !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  letter-spacing: -1px !important;
+}
+
+.course-subtitle {
+  font-size: 1.35rem !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 32px !important;
+  font-weight: 400 !important;
+}
+
+/* 徽章样式 */
+.badge-container {
+  display: flex !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 36px !important;
+}
+
+.badge-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 20px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 30px !important;
+  color: white !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.badge-item:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 统计数据样式 */
+.course-stats {
+  display: flex !important;
+  gap: 48px !important;
+  margin: 40px 0 !important;
+  flex-wrap: wrap !important;
+}
+
+.stat-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.stat-icon {
+  font-size: 28px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.stat-content .stat-value {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  line-height: 1 !important;
+}
+
+.stat-content .stat-label {
+  font-size: 14px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin-top: 4px !important;
+}
+
+/* 主内容区域优化 */
+.main-content {
+  position: relative !important;
+  z-index: 20 !important;
+  padding: 40px 0 80px !important;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%) !important;
+}
+
+.content-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 60px !important;
+}
+
+.content-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 400px !important;
+  gap: 50px !important;
+  align-items: start !important;
+}
+
+/* 卡片样式优化 */
+.modern-card {
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06) !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.modern-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-5px) !important;
+}
+
+.sticky-card {
+  position: sticky !important;
+  top: 80px !important;
+}
+
+.card-header {
+  padding: 28px 32px !important;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%) !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+.section-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.card-content {
+  padding: 32px !important;
+}
+
+/* 视频列表美化 */
+.video-list {
+  padding: 0 !important;
+}
+
+.video-item {
+  padding: 18px 20px !important;
+  margin: 0 16px 12px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  border: 2px solid transparent !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.video-item::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.1) 50%,
+    transparent 100%) !important;
+  transition: left 0.5s ease !important;
+}
+
+.video-item:hover::before {
+  left: 100% !important;
+}
+
+.video-item:hover {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%) !important;
+  border-color: #6366f1 !important;
+  transform: translateX(8px) !important;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15) !important;
+}
+
+.video-title {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  line-height: 1.4 !important;
+  margin-bottom: 8px !important;
+}
+
+.video-duration {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 12px !important;
+  background: #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+  font-weight: 500 !important;
+}
+
+/* 操作按钮美化 */
+.course-actions {
+  margin-top: 48px !important;
+}
+
+.primary-action,
+.success-action {
+  padding: 18px 40px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.primary-action {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+  color: white !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25) !important;
+}
+
+.primary-action:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 40px rgba(99, 102, 241, 0.35) !important;
+}
+
+.success-action {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+  color: white !important;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25) !important;
+}
+
+.success-action:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.35) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .sticky-card {
+    position: static !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 400px !important;
+    padding: 60px 0 80px !important;
+  }
+
+  .hero-content {
+    padding: 0 20px !important;
+  }
+
+  .course-title {
+    font-size: 2rem !important;
+  }
+
+  .course-subtitle {
+    font-size: 1.1rem !important;
+  }
+
+  .course-stats {
+    gap: 24px !important;
+  }
+
+  .stat-content .stat-value {
+    font-size: 20px !important;
+  }
+
+  .content-container {
+    padding: 0 20px !important;
+  }
+
+  .card-header {
+    padding: 20px !important;
+  }
+
+  .card-content {
+    padding: 20px !important;
+  }
+
+  .video-item {
+    padding: 14px 16px !important;
+    margin: 0 8px 8px !important;
+  }
+
+  .video-item:hover {
+    transform: translateX(4px) !important;
+  }
 }
 </style>

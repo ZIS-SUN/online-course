@@ -6,7 +6,10 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from './router'
 import './style.css'
+import './styles/global-theme.css'
 import './styles/design-system.css'
+import './styles/components.css'
+import './styles/utilities.css'
 import './styles/animations.css'
 
 // Global Components

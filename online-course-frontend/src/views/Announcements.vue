@@ -136,8 +136,18 @@
 
             <div class="card-content">
               <p class="announcement-summary">
-                {{ truncateContent(announcement.content, 120) }}
+                {{ announcement.isExpanded ? announcement.content : truncateContent(announcement.content, 120) }}
               </p>
+              <button
+                v-if="announcement.content?.length > 120"
+                @click.stop="toggleExpand(announcement)"
+                class="expand-button"
+              >
+                <span>{{ announcement.isExpanded ? '收起' : '展开更多' }}</span>
+                <el-icon>
+                  <component :is="announcement.isExpanded ? 'ArrowUp' : 'ArrowDown'" />
+                </el-icon>
+              </button>
             </div>
 
             <div class="card-footer">
@@ -231,6 +241,10 @@ const loadAnnouncements = async () => {
     console.error('Failed to load announcements:', error)
     ElMessage.error('加载公告失败')
   }
+}
+
+const toggleExpand = (announcement) => {
+  announcement.isExpanded = !announcement.isExpanded
 }
 
 const viewAnnouncement = (id) => {
@@ -634,13 +648,50 @@ const getAnnouncementTagType = (type) => {
 }
 
 .card-content {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  position: relative;
 }
 
 .announcement-summary {
-  color: var(--gray-600);
-  line-height: 1.6;
+  color: var(--gray-700);
+  line-height: 1.7;
   margin: 0;
+  font-size: calc(var(--text-base) * 1.05);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.announcement-card.expanded .announcement-summary {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.expand-button {
+  margin-top: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-base);
+  transition: all 0.2s ease;
+}
+
+.expand-button:hover {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--primary-dark);
+}
+
+.expand-button .el-icon {
+  transition: transform 0.2s ease;
 }
 
 .card-footer {

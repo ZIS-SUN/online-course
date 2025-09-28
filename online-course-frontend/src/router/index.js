@@ -59,7 +59,7 @@ const routes = [
       {
         path: 'analytics',
         name: 'AdminAnalytics',
-        component: () => import('../views/admin/Analytics.vue')
+        component: () => import('../views/admin/DataAnalytics.vue')
       },
       {
         path: 'categories',
